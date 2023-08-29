@@ -1,0 +1,38 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}{{ category }}{% endblock %}
+
+{% load static %}
+
+{% block main-content %}
+    {% if user is not None %}
+        <a href="{% url 'polls:new_poll' %}" class="new-poll__button">
+            <i class="fa-solid fa-plus"></i>
+            new poll
+        </a>
+    {% endif %}
+    <div class="polls">
+        {% if polls %}
+            {% for question in polls %}
+                <div class="poll-container">
+                    <div class="poll-header">
+                        <div class="poll-header__user_info">
+                            <img src="{% static 'polls/images/user.png' %}" alt="" class="poll-header__logo">
+                            <p class="poll-header__username">{{ question.created_by }}</p>
+                        </div>
+                    </div>
+                    <div class="poll-title">
+                        <a href="{% url 'polls:details' question.id %}">{{ question.question_text }}</a>
+                    </div>
+                    <div class="poll-footer">
+                        <div class="poll-footer__votes">
+                            <p class="poll-footer__count">{{ question.vote_set.count }} votes</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-polls">No polls in category {{ category }} are available</p>
+        {% endif %}
+    </div>
+{% endblock %}

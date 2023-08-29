@@ -1,0 +1,44 @@
+{% extends 'polls/base.html' %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static "polls/style.css" %}">
+
+{% block title %}{{ question.question_text }}{% endblock %}
+
+<div>
+    {% block main-content %}
+        <div>
+        {% if error_messages %}
+            {% for error in error_messages %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+            <div class="poll-container">
+                <div class="poll-header">
+                    <div class="poll-header__user_info">
+                        <img src="{% static 'polls/images/user.png' %}" alt="" class="poll-header__logo">
+                        <p class="poll-header__username">{{ question.created_by }}</p>
+                    </div>
+                    {% if user == question.created_by %}
+                    <div class="poll-header__actions">
+                        <a href="{% url 'polls:edit_poll' question.id %}">
+                            <img src="{% static 'polls/images/pen-solid.svg' %}" class="poll-header__edit_icon" alt="edit">
+                        </a>
+                        <a href="{% url 'polls:delete_poll' question.id %}">
+                            <img src="{% static 'polls/images/xmark-solid.svg' %}" class="poll-header__delete_icon" alt="delete">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="poll-title">
+                    <h1 href="{% url 'polls:details' question.id %}">{{ question.question_text }}</h1>
+                </div>
+                <ul class="poll-choices">
+                    {% for choice in question.choice_set.all %}
+                        <li>{{ choice.choice_text }}: {{ choice.votes }} votes</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+</div>

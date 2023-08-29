@@ -1,0 +1,46 @@
+.categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category{
+    position: relative;
+    display: block;
+    width: 402px;
+    height: 234px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+
+.category img{
+    width: 402px;
+    height: 234px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+.category p{
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.background-fade{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 402px;
+    height: 234px;
+    background-color: rgba(101, 40, 247, 0.31);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    z-index: 4;
+}

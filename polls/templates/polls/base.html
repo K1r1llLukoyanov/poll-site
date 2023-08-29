@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "polls/style.css" %}">
+    <link rel="stylesheet" href="{% static 'polls/poll.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/form.css' %}">
+    <link rel="stylesheet" href="{% static 'polls/categories.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="{% url 'polls:index' %}" class="logo-link">
+                    Polls app
+                </a>
+            </div>
+            <nav class="nav-container">
+                <a href="{% url 'polls:categories' %}" class="header-link">All categories</a>
+                <a href="{% url 'polls:about' %}" class="header-link">About</a>
+            </nav>
+            <div class="authentication">
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'login:index' %}" class="header-link">
+                        Log In
+                    </a>
+                {% else %}
+                    <p class="header-link">
+                        {{ user.username }}
+                    </p>
+                    <a href="{% url 'login:logout' %}" class="header-link">
+                        Log out
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="main-content">
+            {% block main-content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

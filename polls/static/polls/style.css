@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300;10..48,400;10..48,500;10..48,600&family=Poppins:wght@300;400;500;600&family=Roboto&display=swap');
+
+*,
+*::after,
+*::before {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #6528F7;
+}
+
+.header {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    background-color: #6528F7;
+    padding: 20px 30px;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 3;
+    gap: 60px;
+}
+
+.logo-container a{
+    font-size: 30px;
+    color: white;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+.header-link {
+    color: white;
+    font-size: 18px;
+    transition: 0.5s ease all;
+}
+
+.header-link:hover {
+    color: #c9b3fc;
+}
+
+.content {
+    display: grid;
+    padding: 50px;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.left-sidebar{
+    display: flex;
+    grid-column-start: 0;
+    grid-column-end: 2;
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.left-sidebar__header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.right-sidebar{
+    padding: 10px;
+    grid-column-start: 8;
+    grid-column-end: 9;
+}
+
+
+.main-content{
+    overflow-y: scroll;
+    grid-column-start: 3;
+    grid-column-end: 7;
+    grid-row-start: 0;
+    grid-row-end: 2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+.main-content {
+  -ms-overflow-style: none;  /* IE и Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.authentication{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: flex-end;
+}
+
+.button-style{
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #c9b3fc;
+    color: white;
+    cursor: pointer;
+}
+
+.poll-header__username{
+    display: inline;
+}

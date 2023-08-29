@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}All categories{% endblock %}
+
+{% load static %}
+
+{% block main-content %}
+    <div class="categories">
+        {% if categories %}
+        {% for category in categories %}
+            <a href="{% url 'polls:category' category.category_name %}" class="category">
+                <p>{{ category.category_name }}</p>
+                <img src="{% static category.img %}" alt="img">
+                <div class="background-fade"></div>
+            </a>
+        {% endfor %}
+        {% else %}
+        <h1>No categories are available</h1>
+        {% endif %}
+    </div>
+{% endblock %}

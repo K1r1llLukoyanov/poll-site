@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}New poll{% endblock %}
+
+{% load static %}
+
+{% block main-content%}
+    <div class="new-poll">
+        <form action="{% url 'polls:new_poll' %}" method="POST" class="new-edit-form" id="new_poll_form">
+            {% csrf_token %}
+            {% for error in error_messages %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <div class="new-edit-poll__fields" id="new-edit-poll__fields">
+                <div class="new-edit-poll__field">
+                    <label for="question_text">Question text</label>
+                    <input type="text" name="question_text" id="question_text">
+                </div>
+            </div>
+            <input type="submit" value="Create" class="button-style">
+        </form>
+        {{ forms }}
+    <div class="new-edit-poll__buttons">
+        <button type="submit" class="button-style" id="add_choice_button">+ choice</button>
+        <button type="submit" class="button-style" id="reduce_choice_button">- choice</button>
+    </div>
+    </div>
+    <script src="{% static 'polls/forms.js' %}"></script>
+{% endblock %}

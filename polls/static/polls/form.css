@@ -1,0 +1,30 @@
+.login_register_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.input-container a{
+    display: block;
+}
+
+.input-container__label{
+    font-size: 20px;
+}
+
+.input-container input{
+    width: 300px;
+    padding: 10px 20px;
+    border: 0px;
+    border-bottom: 1px solid #1b1b1b;
+    outline: none;
+}

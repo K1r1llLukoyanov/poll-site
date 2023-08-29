@@ -1,0 +1,18 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Poll deletion{% endblock%}
+
+{% block main-content %}
+    <div>
+        {% if error_messages %}
+            {% for error in error_messages %}
+                <p class="error_message">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <p>Are you sure you want to delete poll: {{ question.question_text }}</p>
+        <form action="{% url 'polls:delete_poll' question.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Yes">
+        </form>
+    </div>
+{% endblock %}

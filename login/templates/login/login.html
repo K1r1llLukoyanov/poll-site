@@ -1,0 +1,25 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+
+{% block main-content %}
+    <form method="POST" action="{% url 'login:logging' %}" class="login_register_form">
+        {% csrf_token %}
+        {% if error_message %}
+            {% for error in error_message %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor%}
+        {% endif %}
+        {% for field in form %}
+            <div class="input-container">
+                <label for="{{ field.id }}" class="input-container__label">{{ field.label }}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <div class="input-container">
+            <a href="{% url 'login:register' %}">Register</a>
+        </div>
+        <input type="submit" value="Log In" class="button-style">
+    </form>
+{% endblock %}

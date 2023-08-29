@@ -1,0 +1,32 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Edit{% endblock %}
+
+
+{% block main-content %}
+    <div class="new-poll">
+        <form action="{% url 'polls:edit_poll' question.id %}" method="POST">
+            {% csrf_token %}
+            {% if error_messages %}
+                {% for error in error_messages %}
+                    <div class="error">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% for field in question_form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <input id="{{ field.id_for_label }}" name="{{ field.html_name }}" value="{{ field.data }}">
+            {% endfor %}
+            {% for choice_form in choice_forms %}
+                <div>
+                    {% for field in choice_form %}
+                        <label for="choice_text_{{ choice_form.id }}">{{ field.label }}</label>
+                        <input type="text" name="choice_text_{{ choice_form.id }}" id="choice_text_{{ choice_form.id }}" value="{{ field.data }}">
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Save">
+        </form>
+    </div>
+{% endblock %}
